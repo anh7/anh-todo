@@ -16,7 +16,6 @@ describe('AppComponent', () => {
       BrowserModule,
       AppRoutingModule,
       BrowserAnimationsModule,
-      MatSlideToggleModule
     ],
     declarations: [AppComponent]
   }).compileComponents());
