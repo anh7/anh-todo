@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { LayoutToolbarComponent } from './layout-toolbar/layout-toolbar.component';
 import { MaterialModule } from '../common/material/material.module';
+import { LayoutContentComponent } from './layout-content/layout-content.component';
 
 @NgModule({
   declarations: [
-    ToolbarComponent
+    LayoutToolbarComponent,
+    LayoutContentComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
   ],
   exports: [
-    ToolbarComponent
+    LayoutToolbarComponent
   ]
 })
 export class LayoutModule { }
