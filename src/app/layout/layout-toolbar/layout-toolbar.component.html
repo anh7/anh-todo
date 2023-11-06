@@ -6,7 +6,7 @@
     </button>
     <div *ngIf="!isMobile">
         <button  *ngFor="let menuItem of menuItems; let i = index; trackBy: getMenuItemKey" mat-button 
-            routerLink="menuItem.route">
+            routerLink={{menuItem.route}}>
                 {{menuItem.label}}
         </button>
     </div>

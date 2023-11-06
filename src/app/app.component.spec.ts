@@ -31,12 +31,4 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'anh-todo'`, () => {
-    expect(component.title).toEqual('anh-todo');
-  });
-
-  it('should render the title', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('anh-todo app is running!');
-  });
 });

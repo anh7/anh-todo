@@ -1,9 +1,10 @@
 <anh-layout-toolbar 
   [menuItems]="[
-    {route: '/home', label: 'Home', icon: 'home'},
+    {route: '/', label: 'Home', icon: 'home'},
+    {route: '/todo', label: 'Todo', icon: 'info'},
     {route: '/login', label: 'Login', icon: 'login'},
     ]"
   ></anh-layout-toolbar>
 <div class="content">
-  <span>{{title}} app is running!</span>
+  <anh-layout-content></anh-layout-content>
 </div>
