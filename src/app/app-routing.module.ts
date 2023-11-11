@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TodoListComponent } from './todo/todo-list/todo-list.component';
-import { TodoItemComponent } from './todo/todo-item/todo-item.component';
-import { HomeIndexComponent } from './home/home-index/home-index.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: HomeIndexComponent},
-  { path: 'todo', component: TodoListComponent},
-  { path: 'todo/:id', component: TodoItemComponent},
+  {
+    path: '',
+    redirectTo: 'todo',
+    pathMatch: 'full'
+  },
+  { 
+    path: 'todo',
+    loadChildren: () => import('./todo/todo.module').then((m) => m.TodoModule)
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy:PreloadAllModules
+    }),
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

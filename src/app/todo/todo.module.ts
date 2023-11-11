@@ -2,16 +2,32 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [
+  {
+    path: '',
+    component: TodoListComponent,
+  },
+  {
+    path: ':id',
+    component: TodoItemComponent,
+  }
+];
 
 @NgModule({
   declarations: [
     TodoListComponent,
-    TodoItemComponent
+    TodoItemComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule,
+    RouterModule.forChild(routes),
+  ],
+  exports: [
+    TodoListComponent,
   ]
 })
 export class TodoModule { }

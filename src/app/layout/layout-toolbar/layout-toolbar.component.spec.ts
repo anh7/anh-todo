@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LayoutToolbarComponent } from './layout-toolbar.component';
-import { LayoutMaterialModule } from '../layout-material.module';
+import { LayoutMaterialModule } from '../core/layout-material.module';
 
 describe('ToolbarComponent', () => {
   let component: LayoutToolbarComponent;
