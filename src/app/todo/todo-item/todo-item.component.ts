@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { TodoItem } from '../models/todo-item';
 
 @Component({
   selector: 'anh-todo-item',
@@ -7,7 +8,7 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 })
 
 export class TodoItemComponent implements OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
-  @Input() id: number = 0;
+  @Input() item! : TodoItem;
   
   constructor() { }
 
@@ -41,5 +42,9 @@ export class TodoItemComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
 
   ngAfterViewChecked(): void {
     console.log('TodoItemComponent: ngAfterViewChecked');
+  }
+
+  delete() {
+    console.log('TodoItemComponent: delete');
   }
 }

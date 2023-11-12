@@ -1,31 +1,40 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { LayoutToolbarMenuItem } from './layout-toolbar-menu-item';
+import { LayoutToolbarMenuItem } from '../core/layout-toolbar-menu-item';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'anh-layout-toolbar',
   templateUrl: './layout-toolbar.component.html',
   styleUrls: ['./layout-toolbar.component.sass']
 })
-export class LayoutToolbarComponent implements OnInit {
+export class LayoutToolbarComponent implements OnInit, OnDestroy {
   @Input() menuItems: LayoutToolbarMenuItem[] = [];
-  isMobile = false;
+  $isMobile: Observable<boolean> | undefined;
 
   constructor(
     private breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
-    this.breakpointObserver.observe([
+    this.$isMobile = this.breakpointObserver.observe([
       Breakpoints.XSmall,
       Breakpoints.Small,
-    ]).subscribe(result => {
-      if (result.matches) {
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
-    });
+    ])
+    .pipe(
+      map((result) => {
+        if (result.matches) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+    )
+  }
+
+  ngOnDestroy(): void {
+      
   }
 
   getMenuItemKey(index: number, item: LayoutToolbarMenuItem): string {

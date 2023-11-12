@@ -1,5 +1,5 @@
-<p>todo-list works!</p>
-
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+<div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
+    <div class="todo-item-box" *ngFor="let item of items" cdkDrag>
+        <anh-todo-item [item]="item"></anh-todo-item>
+    </div>
 </div>

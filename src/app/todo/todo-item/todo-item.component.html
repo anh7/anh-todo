@@ -1,1 +1,8 @@
-<p>todo-item works!</p>
+<div class="todo-item">
+    <mat-card>
+        <mat-card-content>
+            <mat-checkbox [(ngModel)]="item.completed"></mat-checkbox>
+            <span class="todo-item-label">{{item.title}}</span>
+        </mat-card-content>
+    </mat-card>
+</div>
