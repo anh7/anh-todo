@@ -4,13 +4,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'todo',
-    pathMatch: 'full'
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
   },
   { 
     path: 'todo',
     loadChildren: () => import('./todo/todo.module').then((m) => m.TodoModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
+  }
 ];
 
 @NgModule({

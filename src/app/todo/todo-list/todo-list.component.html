@@ -1,3 +1,5 @@
 <p>todo-list works!</p>
-<button mat-button color="primary">Primary</button>
-<anh-todo-item [id]="13"></anh-todo-item>
+
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+</div>
