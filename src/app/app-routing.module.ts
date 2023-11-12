@@ -4,15 +4,18 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    data: { state: 'home' },
   },
   { 
     path: 'todo',
-    loadChildren: () => import('./todo/todo.module').then((m) => m.TodoModule)
+    loadChildren: () => import('./todo/todo.module').then((m) => m.TodoModule),
+    data: { state: 'todo' },
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    data: { state: 'auth' },
   }
 ];
 

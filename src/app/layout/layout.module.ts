@@ -4,6 +4,7 @@ import { LayoutToolbarComponent } from './layout-toolbar/layout-toolbar.componen
 import { LayoutMaterialModule } from './core/layout-material.module';
 import { LayoutContentComponent } from './layout-content/layout-content.component';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     LayoutMaterialModule,
     RouterModule,
+    BrowserAnimationsModule
   ],
   exports: [
     LayoutToolbarComponent,
