@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { LayoutContentComponent } from './layout-content.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { trigger } from '@angular/animations';
 
 describe('LayoutContentComponent', () => {
   let component: LayoutContentComponent;
@@ -12,16 +13,31 @@ describe('LayoutContentComponent', () => {
       declarations: [LayoutContentComponent],
       imports: [
         RouterTestingModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
       ],
       
-    });
+    })
+    .overrideComponent(LayoutContentComponent, {
+      set: {
+        animations: [trigger('routerTransition', [])]
+      }
+    })
+    .compileComponents();
     fixture = TestBed.createComponent(LayoutContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create', waitForAsync(() => {
+    fixture.whenStable().then(() => {
+      expect(component).toBeTruthy();
+    });
+  }));
+
+  it('should have a getState method that returns the activatedRouteData state', () => {
+    const mockActivatedRouteData = { state: 'mockState' };
+    const mockOutlet = { activatedRouteData: mockActivatedRouteData };
+    const state = component.getState(mockOutlet);
+    expect(state).toEqual(mockActivatedRouteData.state);
   });
 });

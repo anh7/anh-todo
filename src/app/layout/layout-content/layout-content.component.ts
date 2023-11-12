@@ -9,15 +9,8 @@ import { routerTransition } from './router-transition';
   animations: [routerTransition],
 })
 export class LayoutContentComponent {
-  constructor(private contexts: ChildrenOutletContexts) {
-
-  }
 
   getState(outlet: any) {
-    console.log(outlet.activatedRouteData.state);
-    console.log('outlet');
-    console.log(outlet);
-    console.log(this.contexts);
     return outlet.activatedRouteData.state;
   }
 

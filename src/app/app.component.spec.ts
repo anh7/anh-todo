@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './layout/layout.module';
+import { LayoutContentComponent } from './layout/layout-content/layout-content.component';
+import { trigger } from '@angular/animations';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -19,7 +21,13 @@ describe('AppComponent', () => {
       LayoutModule
     ],
     declarations: [AppComponent]
-  }).compileComponents());
+  })
+  .overrideComponent(LayoutContentComponent, {
+    set: {
+      animations: [trigger('routerTransition', [])]
+    }
+  })
+  .compileComponents());
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
