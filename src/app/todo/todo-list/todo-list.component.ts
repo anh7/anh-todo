@@ -1,5 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
-import { TodoItem } from '../models/todo-item';
+import { TodoItem } from '../core/todo-item';
 
 @Component({
   selector: 'anh-todo-list',
